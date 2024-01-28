@@ -1,0 +1,36 @@
+<meta charset="UTF-8">
+
+<!-- Analytics-->
+{% include gtag.html %}
+
+<!-- Generic -->
+<meta name="language" content="english">
+<meta name="copyright" content="{{ site.author }}">
+<meta name="author" content="{{ site.author }}">
+
+<!-- SEO -->
+<title>{{ site.data.brand.name }} - {{ page.title }}</title>
+{% if site.data.production.demo %}
+	<meta name="robots" content="noindex,nofollow">
+{% endif %}
+<link rel="canonical" href="{{ page.url | absolute_url }}">
+<meta name="description" content="{{ site.data.brand.description }}">
+<meta property="og:title" content="{{ page.title }}">
+<meta property="og:locale" content="{{ site.data.contact.location.locale }}">
+<meta property="og:description" content="{{ site.data.brand.description }}">
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+<meta property="og:site_name" content="{{ site.data.brand.name }}">
+<meta property="og:type" content="website">
+{% include icons.html %}
+
+<!-- Styles -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% for color_profile in site.color_profiles %}
+	{% if color_profile.name == site.data.brand.color_profile %}
+		<meta name="profile-color" content="{{ color_profile.background_color }}">
+	{% endif %}
+{% endfor %}
+<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+
+<!-- Scripts -->
+<script src="{{ '/assets/scripts/turbolinks.js' | relative_url }}"></script>

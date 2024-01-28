@@ -1,0 +1,46 @@
+---
+---
+
+// Color profiles
+{% for color_profile in site.color_profiles %}
+  {% if color_profile.name == site.data.brand.color_profile %}
+    $foreground-color: {{ color_profile.foreground_color }};
+    $background-color: {{ color_profile.background_color }};
+    $transparent-nav-bar-text-color: {{ color_profile.transparent_nav_bar_text_color }};
+  {% endif %}
+{% endfor %}
+
+// Font profiles
+{% for font_profile in site.font_profiles %}
+  {% if font_profile.name == site.data.brand.font_profile %}
+    {% if font_profile.font_url %}
+      @import url({{ font_profile.font_url }});
+    {% endif %}
+
+    $title-font: {{ font_profile.title_font }};
+    $body-font: {{ font_profile.body_font }};
+  {% endif %}
+{% endfor %}
+
+$accent-color: {{ site.data.brand.accent_color }};
+$opacity: 0.3;
+$border-radius: 10px;
+$permanent_nav_background: {{ site.data.brand.permanent_nav_background }};
+
+@import "main";
+@import "nav";
+@import "reviews";
+@import "openingTimes";
+@import "socials";
+@import "gmap";
+@import "gallery";
+@import "menu";
+
+@media only screen and (max-width: 480pt) { /* Mobile */
+  @import "main.mobile";
+  @import "nav.mobile";
+  @import "reviews.mobile";
+  @import "gmap.mobile";
+  @import "gallery.mobile";
+  @import "menu.mobile";
+}

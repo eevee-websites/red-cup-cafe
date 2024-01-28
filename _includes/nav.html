@@ -1,0 +1,18 @@
+<nav {% unless page.banner %}id="scrolled"{% endunless %}>
+	<a id="title" href="{{ '/' | relative_url }}">
+		<img src="{{ '/assets/images/logo.webp' | relative_url }}" alt="{{ site.data.brand.name }} logo">
+		<span>{{ site.data.brand.name }}{% if site.data.production.demo %} - Unofficial{% endif %}</span>
+	</a>
+	<ul>
+		<li id="mobileLogo">
+			<a href="{{ '/' | relative_url }}">
+				<img src="{{ '/assets/images/logo.webp' | relative_url }}" alt="{{ site.data.brand.name }} logo">
+			</a>
+		</li>
+		{% for navigation_page in site.data.navigation %}
+			<li>
+				<a href="{{ navigation_page.url | relative_url }}"{% if page.title == navigation_page.title %} class="currentPage"{% endif %} tabindex="0">{{ navigation_page.title }}</a>
+			</li>
+		{% endfor %}
+	</ul>
+</nav>

@@ -1,0 +1,23 @@
+{% if page.banner %}
+	{% assign banner_path = "/assets/images/banners/" | append: page.banner  | append: "/" | append: page.banner %}
+	<video id="banner" autoplay loop muted playsinline poster="{{ banner_path | append: '.webp' | relative_url }}" style="background-image: url({{ banner_path | append: '.webp' | relative_url }});">
+		{% if page.banner_video %}
+			<source src="{{ banner_path | append: '.webm' | relative_url }}" type="video/webm">
+			<source src="{{ banner_path | append: '.mp4' | relative_url }}" type="video/mp4">
+			Your browser does not support the video tag.
+		{% endif %}
+	</video>
+
+	<!-- Updates scrolling attribute to change nav bar opacity -->
+	<script>
+		function scrollUpdate() {
+			if (document.getElementById("banner") != null) { /* Required for Turbolinks */
+				document.getElementsByTagName("nav")[0].id = this.scrollY > 0 ? "scrolled" : "";
+			}
+		}
+
+		window.addEventListener("scroll", scrollUpdate, false);
+	</script>
+{% else %}
+	<div style="height: 105px"></div>
+{% endif %}

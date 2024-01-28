@@ -1,0 +1,7 @@
+name: Red Cup Cafe
+description: >
+  Licensed cosy local cafe - warm and friendly with yummy breakfast, lunch, burgers, share plates.
+color_profile: dark # options: light, dark, pink
+font_profile: futuristic # options: futuristic, rustic, cursive, formal
+accent_color: "#CB4033"
+permanent_nav_background: false

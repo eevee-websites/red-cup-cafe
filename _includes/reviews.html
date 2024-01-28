@@ -1,0 +1,14 @@
+<div id="reviews">
+	{% for review in site.data.reviews %}
+		<a href="{{ review.link }}" target="_blank" rel="noopener">
+			<h2>{{ review.title }}</h2>
+			<p class="username">&mdash; {{ review.username }}</p>
+			<span class="stars">
+				{% for i in (1..review.stars) %}
+					&starf;
+				{% endfor %}
+			</span>
+			<p>{{ review.message }}</p>
+		</a>
+	{% endfor %}
+</div>
